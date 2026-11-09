@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMART DESKRIPSI KBC & DPL - MI</title>
+<style>
+:root{--green:#123f32;--green2:#1e6650;--gold:#d6b56d;--bg:#f3f6f4;--ink:#20312a;--muted:#66756d;--line:#dce5df}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Arial;color:var(--ink)}
+header{background:linear-gradient(120deg,var(--green),#1c5a45);color:white;padding:26px max(20px,calc((100% - 1100px)/2));}
+header .eyebrow{color:#e7d5a7;font-size:12px;font-weight:700;letter-spacing:1.5px}h1{margin:5px 0;font-size:clamp(23px,4vw,34px)}header p{margin:4px 0 0;color:#e0ebe5}
+main{max-width:1100px;margin:24px auto;padding:0 18px 50px}.layout{display:grid;grid-template-columns: minmax(0,1.1fr) minmax(300px,.9fr);gap:18px}
+.card{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 18px #183b2a0a}
+h2{font-size:18px;margin:0 0 14px;color:var(--green)}h3{font-size:15px;margin:0 0 8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin-bottom:12px}label{display:block;font-weight:650;font-size:13px;margin-bottom:5px}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cbd8d0;border-radius:9px;background:#fff;color:var(--ink);font:inherit}
+textarea{min-height:85px;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid #9ac8b0;border-color:var(--green2)}
+.tabs{display:flex;gap:8px;margin-bottom:15px}.tab{border:1px solid var(--line);background:#f8faf8;padding:9px 14px;border-radius:9px;font-weight:700;cursor:pointer}.tab.active{background:var(--green);color:white;border-color:var(--green)}
+button{border:0;border-radius:9px;padding:11px 14px;font:700 14px system-ui;cursor:pointer}.primary{background:var(--green);color:white}.secondary{background:#eaf1ec;color:var(--green)}.gold{background:#f4ead3;color:#59451b}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.output{white-space:pre-wrap;min-height:180px;padding:14px;border:1px dashed #b8c9be;border-radius:10px;background:#fbfdfb}
+.hint{font-size:12px;color:var(--muted);margin-top:5px}.pill{display:inline-block;background:#edf4ef;color:#24533e;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:700}
+.history{margin-top:18px}.history-item{border-top:1px solid var(--line);padding:10px 0;font-size:13px}.history-item button{padding:6px 9px;font-size:12px}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:20px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:1fr}header{padding:22px 18px}}
+@media print{header,.form-card,.actions,.history,footer{display:none!important}main{margin:0;padding:0}.layout{display:block}.card{border:0;box-shadow:none}.output{border:0}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">ASISTEN GURU MADRASAH IBTIDAIYAH</div><h1>SMART DESKRIPSI KBC & DPL</h1><p>Pembuat deskripsi pembelajaran yang kontekstual, positif, dan mudah dipahami.</p></header>
+<main>
+<div class="layout">
+<section class="card form-card">
+<h2>1. Data Pembelajaran</h2>
+<div class="grid">
+<div class="field"><label for="school">Nama Madrasah</label><input id="school" placeholder="Contoh: MIN 1 Kotawaringin Timur"></div>
+<div class="field"><label for="teacher">Nama Guru</label><input id="teacher" placeholder="Nama guru"></div>
+<div class="field"><label for="year">Tahun Pelajaran</label><input id="year" placeholder="2026/2027"></div>
+<div class="field"><label for="semester">Semester</label><select id="semester"><option>Ganjil</option><option>Genap</option></select></div>
+<div class="field"><label for="student">Nama Peserta Didik</label><input id="student" placeholder="Nama peserta didik"></div>
+<div class="field"><label for="class">Kelas</label><select id="class"><option>I</option><option>II</option><option>III</option><option selected>IV</option><option>V</option><option>VI</option></select></div>
+<div class="field"><label for="subject">Mata Pelajaran</label><input id="subject" placeholder="Contoh: IPAS"></div>
+<div class="field"><label for="topic">Materi / Topik</label><input id="topic" placeholder="Contoh: Lingkungan sekitar"></div>
+</div>
+<h2 style="margin-top:8px">2. Pilih Jenis Deskripsi</h2>
+<div class="tabs"><button class="tab active" id="tabKbc" type="button">Deskripsi KBC</button><button class="tab" id="tabDpl" type="button">Deskripsi DPL</button></div>
+<div class="field"><label for="dimension" id="dimensionLabel">Nilai Panca Cinta</label><select id="dimension"></select></div>
+<div class="field"><label for="activity">Kegiatan / Bukti Pengamatan</label><select id="activity"></select><div class="hint">Pilih kegiatan yang benar-benar diamati. Pilihan ini menjadi dasar kalimat deskripsi.</div></div>
+<div class="field"><label for="level">Tingkat Perkembangan</label><select id="level"><option value="Mulai Berkembang">Mulai Berkembang</option><option value="Cakap" selected>Cakap</option><option value="Mahir">Mahir</option></select></div>
+<div class="field"><label for="note">Catatan khusus guru (opsional)</label><textarea id="note" placeholder="Contoh: mulai berinisiatif tanpa diminta dan mengajak dua teman ikut menjaga kebersihan."></textarea></div>
+<button class="primary" id="generate" type="button">✦ Buat Deskripsi</button>
+<p class="hint">Aplikasi ini menyusun kalimat dari data yang Bapak/Ibu masukkan. Periksa kembali kesesuaian hasil dengan bukti pengamatan.</p>
+</section>
+<section class="card">
+<h2>3. Hasil Deskripsi</h2><div class="pill" id="resultType">KBC • Panca Cinta</div>
+<div id="output" class="output" style="margin-top:12px">Hasil deskripsi akan tampil di sini setelah Bapak/Ibu mengisi data dan menekan tombol “Buat Deskripsi”.</div>
+<div class="actions"><button class="secondary" id="copy" type="button">Salin</button><button class="secondary" id="save" type="button">Simpan Riwayat</button><button class="gold" id="download" type="button">Unduh .txt</button><button class="secondary" id="print" type="button">Cetak</button></div>
+<div class="history"><h3>Riwayat Deskripsi di Perangkat Ini</h3><div id="historyList" class="hint">Belum ada deskripsi tersimpan.</div><p class="hint">Riwayat disimpan di browser/perangkat yang sedang digunakan, bukan di server.</p></div>
+</section></div>
+<footer>SMART DESKRIPSI KBC & DPL • Versi awal untuk MI • Gunakan data pengamatan yang benar.</footer>
+</main>
+<script>
+const kbc=[
+["Cinta Allah SWT dan Rasul-Nya",["Berdoa sebelum dan sesudah belajar","Mengikuti kegiatan ibadah dengan tertib","Menunjukkan perilaku santun dan meneladani akhlak terpuji"]],
+["Cinta Ilmu",["Aktif bertanya dan mengikuti pembelajaran","Menyelesaikan tugas dan berusaha memahami materi","Membaca serta mencari informasi dari sumber belajar"]],
+["Cinta Lingkungan",["Membuang sampah pada tempatnya","Menjaga kebersihan dan kerapian kelas","Merawat tanaman dan menggunakan fasilitas dengan baik"]],
+["Cinta Diri dan Sesama Manusia",["Menghargai teman yang berbeda pendapat","Membantu teman yang mengalami kesulitan","Menjaga kesehatan diri dan bersikap santun"]],
+["Cinta Tanah Air",["Mengikuti upacara dengan tertib","Menghargai keberagaman budaya dan bahasa","Menjaga kerukunan serta mencintai lingkungan sekitar"]]
+];
+const dpl=[
+["Keimanan dan Ketakwaan terhadap Tuhan Yang Maha Esa",["Berdoa dan bersyukur dalam kegiatan sehari-hari","Menunjukkan perilaku jujur dan santun","Melaksanakan pembiasaan ibadah sesuai tuntunan"]],
+["Kewargaan",["Mengikuti aturan kelas dan madrasah","Menghargai perbedaan dan menjaga kerukunan","Melaksanakan tanggung jawab sebagai anggota kelas"]],
+["Penalaran Kritis",["Mengajukan pertanyaan tentang materi","Membandingkan informasi dan menyampaikan alasan","Mengidentifikasi masalah dan mencoba menemukan solusi"]],
+["Kreativitas",["Menghasilkan ide atau karya sederhana","Mencoba cara berbeda untuk menyelesaikan tugas","Mengembangkan gagasan saat kegiatan pembelajaran"]],
+["Kolaborasi",["Berbagi tugas dalam kelompok","Mendengarkan dan menghargai pendapat teman","Berpartisipasi menyelesaikan tugas bersama"]],
+["Kemandirian",["Mengerjakan tugas sesuai petunjuk","Menyiapkan perlengkapan belajar sendiri","Berusaha menyelesaikan tugas sebelum meminta bantuan"]],
+["Kesehatan",["Menjaga kebersihan diri dan lingkungan","Mempraktikkan kebiasaan hidup bersih dan sehat","Mengikuti aktivitas fisik dengan tertib"]],
+["Komunikasi",["Menyampaikan pendapat dengan bahasa santun","Menceritakan kembali informasi yang dipelajari","Mendengarkan dan menanggapi pembicaraan dengan baik"]]
+];
+let type="KBC", latest="";
+const $=id=>document.getElementById(id);
+function fill(){
+ const data=type==="KBC"?kbc:dpl;
+ $("dimension").innerHTML=data.map((x,i)=>`<option value="${i}">${x[0]}</option>`).join("");
+ $("activity").innerHTML=data[0][1].map((x,i)=>`<option value="${i}">${x}</option>`).join("");
+ $("dimensionLabel").textContent=type==="KBC"?"Nilai Panca Cinta":"Dimensi Profil Lulusan";
+ $("resultType").textContent=type==="KBC"?"KBC • Panca Cinta":"DPL • 8 Dimensi Profil Lulusan";
+}
+$("dimension").addEventListener("change",()=>{let d=(type==="KBC"?kbc:dpl)[$("dimension").value];$("activity").innerHTML=d[1].map((x,i)=>`<option value="${i}">${x}</option>`).join("");});
+function setType(t){type=t;$("tabKbc").classList.toggle("active",t==="KBC");$("tabDpl").classList.toggle("active",t==="DPL");fill();}
+$("tabKbc").onclick=()=>setType("KBC");$("tabDpl").onclick=()=>setType("DPL");
+function generate(){
+ const data=type==="KBC"?kbc:dpl, dim=data[+$("dimension").value][0], act=data[+$("dimension").value][1][+$("activity").value];
+ const level=$("level").value, name=$("student").value.trim()||"Peserta didik", topic=$("topic").value.trim(), subject=$("subject").value.trim(), note=$("note").value.trim();
+ let opening,closing;
+ if(level==="Mulai Berkembang"){opening=`${name} mulai menunjukkan ${type==="KBC"?"penerapan nilai":"kemampuan"} ${dim.toLowerCase()} melalui kegiatan ${act.toLowerCase()}.`;closing="Peserta didik masih memerlukan arahan dan penguatan agar perilaku atau kemampuan tersebut berkembang lebih konsisten."}
+ else if(level==="Cakap"){opening=`${name} menunjukkan perkembangan yang baik pada ${dim.toLowerCase()} melalui kegiatan ${act.toLowerCase()}.`;closing="Peserta didik mampu menerapkannya dalam kegiatan pembelajaran sesuai harapan."}
+ else{opening=`${name} menunjukkan penguasaan yang sangat baik pada ${dim.toLowerCase()}, antara lain melalui kegiatan ${act.toLowerCase()}.`;closing="Peserta didik melakukannya secara mandiri dan dapat menjadi contoh positif bagi teman sesuai konteks kegiatan."}
+ let context=[subject?`dalam pembelajaran ${subject}`:"",topic?`pada materi ${topic}`:""].filter(Boolean).join(" ");
+ let result=opening+(context?` ${context.charAt(0).toUpperCase()+context.slice(1)}.`:"")+" "+closing+(note?` Catatan pengamatan guru: ${note}`:"");
+ latest=`DESKRIPSI ${type}\nNama: ${name}\nKelas: ${$("class").value}\nMadrasah: ${$("school").value||"-"}\nTahun Pelajaran: ${$("year").value||"-"} | Semester: ${$("semester").value}\nAspek: ${dim}\nTingkat Perkembangan: ${level}\n\n${result}`;
+ $("output").textContent=result;
+}
+$("generate").onclick=generate;
+$("copy").onclick=async()=>{if(!latest){alert("Buat deskripsi terlebih dahulu.");return}try{await navigator.clipboard.writeText($("output").textContent);alert("Deskripsi berhasil disalin.")}catch(e){alert("Salin manual teks pada kotak hasil.")}};
+function getHistory(){try{return JSON.parse(localStorage.getItem("smartKbcDplHistory")||"[]")}catch(e){return []}}
+function renderHistory(){let h=getHistory();$("historyList").innerHTML=h.length?h.map((x,i)=>`<div class="history-item"><b>${x.name}</b> • ${x.type} • ${x.dim}<br><span>${x.date}</span> <button class="secondary" onclick="loadHistory(${i})">Lihat</button> <button class="secondary" onclick="deleteHistory(${i})">Hapus</button></div>`).join(""):"Belum ada deskripsi tersimpan."}
+window.loadHistory=i=>{$("output").textContent=getHistory()[i].text;latest=getHistory()[i].full};
+window.deleteHistory=i=>{let h=getHistory();h.splice(i,1);localStorage.setItem("smartKbcDplHistory",JSON.stringify(h));renderHistory()};
+$("save").onclick=()=>{if(!latest){alert("Buat deskripsi terlebih dahulu.");return}let h=getHistory();h.unshift({name:$("student").value||"Peserta didik",type,dim:(type==="KBC"?kbc:dpl)[$("dimension").value][0],date:new Date().toLocaleString("id-ID"),text:$("output").textContent,full:latest});localStorage.setItem("smartKbcDplHistory",JSON.stringify(h.slice(0,100)));renderHistory();alert("Deskripsi disimpan di perangkat ini.")};
+$("download").onclick=()=>{if(!latest){alert("Buat deskripsi terlebih dahulu.");return}let blob=new Blob([latest],{type:"text/plain;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="deskripsi-"+type.toLowerCase()+".txt";a.click();URL.revokeObjectURL(a.href)};
+$("print").onclick=()=>{if(!latest){alert("Buat deskripsi terlebih dahulu.");return}window.print()};
+fill();renderHistory();
+</script>
+</body></html>
